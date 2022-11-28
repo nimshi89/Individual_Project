@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "personal-project"
+version = "0.1.0"
+description = "Personal project for work/university"
+authors = ["Jozsef K. <43893201+nimshi89@users.noreply.github.com>"]
+license = "none"
+readme = "README.md"
+packages = [{include = "personal_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pendulum = "^2.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

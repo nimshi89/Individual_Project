@@ -1,0 +1,143 @@
+
+@base <http://example.com/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<types/character> a rdf:Class.
+<types/conversation-map> a rdf:Class.
+<types/interaction> a rdf:Class.
+<types/response> a rdf:Class.
+
+<characters/a> a <types/character>;
+               rdf:label "Billy-bob".
+<characters/b> a <types/character>;
+               rdf:label "Jimbo".
+
+<conversations/map1> a <types/conversation-map>;
+                    <predicates/hasNextInteraction> <interaction/interaction1>.
+
+<interaction/interaction1> a <types/interaction>;
+                        <predicates/hasInitialStatement> "Hey brother. How's it hanging?";
+                        <predicates/initiatedBy> <characters/a>;
+                        <predicates/hasResponseOptions> <response/response_good>, <response/response_bad>, <response/response_great>, <response/response_rumour>.
+
+<response/response_good> a <types/response>;
+                    rdf:label "Rise and shine sugarplum! I am doing well.";
+                    <predicates/initiatedBy> <characters/b>;
+                    <predicates/hasNextInteraction> <interaction/interaction-doing-ok>.
+
+<response/response_bad> a <types/response>;
+                    rdf:label "I feel like a sheep kicked me in the stomach.";
+                    <predicates/initiatedBy> <characters/b>;
+                    <predicates/hasNextInteraction> <interaction/interaction-doing-bad>.
+
+<response/response_great> a <types/response>;
+                    rdf:label "I found a glass of whiskey. I am fine and loaded :D";
+                    <predicates/initiatedBy> <characters/b>;
+                    <predicates/hasNextInteraction> <interaction/interaction-doing-great>.
+
+<response/response_rumour> a <types/response>;
+                        rdf:label "Guess what I heard Billy boi";
+                        <predicates/initiatedBy> <characters/b>;
+                        <predicates/hasNextInteraction> <interaction/interaction_rumour_spread>.
+
+<interaction/interaction_rumour_spread> a <types/interaction>;
+                                    <predicates/initiatedBy> <characters/a>;
+                                    <predicates/hasInitialStatement> "Yeah broher hit me with the news. Is it about the old Conor family?";
+                                    <predicates/hasResponseOptions> <response/response_yeah_it_is>, <response/response_have_you_heard>, <response/response_not_gonna_believe>.
+
+<response/response_yeah_it_is> a <types/response>;
+                            rdf:label "Yeah it is. You wanna knwo what I heard?"; 
+                            <predicates/initiatedBy> <characters/b>;
+                            <predicates/hasNextInteraction> <interaction/interaction_no_thanks>.
+
+<response/response_have_you_heard> a <types/response>;
+                                rdf:label "Have you heard about it? You know maybe we should have some beer while we talk about this.";
+                                <predicates/initiatedBy> <characters/b>;
+                                <predicates/hasNextInteraction> <interaction/interaction-all_set>.
+
+<response/response_not_gonna_believe> a <types/response>;
+                                    rdf:label "You aint gonna believe this! This is bigger than SLICED BREAD!";
+                                    <predicates/initiatedBy> <characters/b>;
+                                    <predicates/hasNextInteraction> <interaction/interaction_tell_me>.
+
+
+<interaction/interaction_tell_me> a <types/interaction>;
+                            <predicates/initiatedBy> <characters/a>;
+                            <predicates/hasInitialStatement> "Stop jenking my leg an get on with it!";
+                            <predicates/hasResponseOptions> <response/response_never_mind>, <response/response_alright_listen>.
+
+<response/response_never_mind> a <types/response>;
+                        rdf:label "You know what. Not my business, let's just drink!";
+                        <predicates/initiatedBy> <characters/b>.
+
+<response/response_alright_listen> a <types/response>;
+                                rdf:label "The Conor kid saw these confield cicrle things. You know the one that thos alien things leave.";
+                                <predicates/initiatedBy> <characters/b>;
+                                <predicates/hasNextInteraction> <interaction/interaction_no_way>.
+
+<interaction/interaction_no_way> a <types/interaction>;
+                            <predicates/initiatedBy> <characters/a>;
+                            <predicates/hasInitialStatement> "NOOOO(sips beer). Should we head over there!? Com'on!".
+
+
+<interaction/interaction_no_thanks> a <types/interaction>;
+                                <predicates/initiatedBy> <characters/a>;
+                                <predicates/hasInitialStatement> "I don't know brother. We shouldn't poke our nose in other folks business. Anyway how you doing?";
+                                <predicates/hasResponseOptions> <response/response_good>, <response/response_bad>, <response/response_great>, <response/response_rumour>.
+
+
+<interaction/interaction-doing-ok> a <types/interaction>;
+                                <predicates/initiatedBy> <characters/a>;
+                                <predicates/hasInitialStatement> "YEEHAAAA! Let's open a few can and go shoot things :D?";
+                                <predicates/hasResponseOptions> <response/response_do_it>, <response/response_nope>, <response/response_leave>.
+
+
+<response/response_do_it> a <types/response>;
+                        rdf:label "Alright Partner! Sounds like a plan!";
+                        <predicates/initiatedBy> <characters/b>;
+                        <predicates/hasNextInteraction> <interaction/interaction-all_set>.
+
+<response/response_nope> a <types/response>;
+                    rdf:label "Nah my brother in crime. We should go visit the new tavern and show them folks how to drink!";
+                    <predicates/initiatedBy> <characters/b>;
+                    <predicates/hasNextInteraction> <interaction/interaction_sounds_good_to_me>.
+
+<response/response_leave> a <types/response>;
+                        rdf:label "Nah mate! I'm mourning... my cow missy died so I won't be going nowhere. I'll stay home and make some beef stew.";
+                        <predicates/initiatedBy> <characters/b>.
+
+<interaction/interaction_sounds_good_to_me> a <types/interaction>;
+                                        <predicates/initiatedBy> <characters/a>;
+                                        <predicates/hasInitialStatement> "Let's go!".
+
+<interaction/interaction-all_set> a <types/interaction>;
+                                <predicates/initiatedBy> <characters/a>;
+                                <predicates/hasInitialStatement> "Alright then let's gooooooo!".
+
+
+<interaction/interaction-doing-bad> a <types/interaction>;
+                                <predicates/initiatedBy> <characters/a>;
+                                <predicates/hasInitialStatement> "Well roll me in sugar and call me biscuit. Then go get some Moonshine!".
+
+<interaction/interaction-doing-great> a <types/interaction>;
+                                    <predicates/initiatedBy> <characters/a>;
+                                    <predicates/hasInitialStatement> "Then we should order some burgers and watch tv!";
+                                    <predicates/hasResponseOptions> <response/response_agree>, <response/response_nah>.
+
+
+<response/response_agree> a <types/response>;
+                        rdf:label "Yeah we should. From Grill Town with extra meat!";
+                        <predicates/initiatedBy> <characters/b>;
+                        <predicates/hasNextInteraction> <interaction/interaction-coming-over>.
+
+<interaction/interaction-coming-over> a <types/interaction>;
+                                    <predicates/initiatedBy> <characters/a>;
+                                    <predicates/hasInitialStatement> "I'm packing my stuff!".
+
+<response/response_nah> a <types/response>;
+                    rdf:label "Nah mate. Sorry just busy with work now";
+                    <predicates/initiatedBy> <characters/b>.
+
+

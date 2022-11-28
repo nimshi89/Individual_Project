@@ -1,0 +1,26 @@
+@base <http://example.com/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<types/character> a rdf:Class.
+<types/conversation-map> a rdf:Class.
+<types/interaction> a rdf:Class.
+<types/response> a rdf:Class.
+
+<characters/a> a <types/character>.
+<characters/b> a <types/character>.
+
+
+<conversations/map1> a <types/conversation-map>;
+                    <predicates/hasNextInteraction> <interaction/interaction1>.
+
+<interaction/interaction1> a <types/interaction>;
+                        <predicates/hasInitialStatement> "How are you doing today?";
+                        <predicates/initiatedBy> <characters/a>;
+                        <predicates/hasResponseOptions> <response/response_good>.
+
+<response/response_good> a <types/response>;
+                    rdf:label "I'm doing alright.";
+                    <predicates/initiatedBy> <characters/b>;
+                    <predicates/hasNextInteraction> <interaction/interaction-doing-ok>.
